@@ -1,0 +1,284 @@
+
+/* Background color*/
+
+body {
+	/*background:#EEF;*/
+	background:#FFF;
+}
+
+/* Text properties */
+
+html {
+	font-size:62.5%;
+}
+
+body {
+	font-size:1.4em;
+	color:#333;
+	font-family: "Cantarell", "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+a {
+	color:#361;
+	text-decoration:underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight:normal;
+	color:#222;
+	font-family:"Volkorn", "Bookman Old Style", Georgia, serif;
+}
+
+.section-header {
+	text-align:right;
+}
+
+.section-header h4 {
+	margin-top: -0.2em;
+  	padding:0 10px 0.25em;
+}
+
+.alt-header  h4 {
+    font-style: oblique;
+    font-size: 1.3em;
+    line-height: 1.3em;
+	color:#777;
+}
+
+h4.alt-header {
+    font-style: oblique;
+    font-size: 1.3em;
+    line-height: 1.3em;
+	color:#777;
+}
+
+.alt-header a {
+    text-decoration: none;
+    color:#666;
+}
+
+.alt-header h5 {
+	font-style:italic;
+	color:#666;
+}
+
+.body-header h1, .body-header h2, .body-header h3, .body-header h4, .body-header h5, .body-header h6 {
+    font-family: "Cantarell", "Helvetica Neue", Arial, Helvetica, sans-serif;
+}  
+
+.body-header h1 {
+	font-size:1.2em;
+	line-height:1.15;
+	padding-top:0.1em;
+	margin-bottom:1.25em;
+}
+
+.body-header h2 {
+	font-size:1em;
+	margin-bottom:1.5em;
+	color: #000;
+}
+
+.body-header h3, .body-header h4, .body-header h5, .body-header h6 {
+	font-size:1em;
+	color: #000;
+}
+
+pre, code, tt {
+	font:1em 'Droid Sans Mono', 'andale mono', 'lucida console', monospace;
+	line-height:1.5;
+
+}
+
+/* Grid */
+
+.container {
+	width:980px;
+	margin:0 auto;
+	text-align:left;
+}
+
+/* Header */
+
+
+#header {
+	margin-top:3em;
+	margin-bottom:2.9em;
+	padding-left:20px;
+}
+
+#header a {
+	text-decoration:none;
+	color:#222;
+}
+
+#navigation {
+	margin-bottom:3em;
+	padding-left:20px;
+}
+
+#navigation a {
+    text-decoration:none;
+}
+
+#navigation h2:first-letter {
+	letter-spacing:.5em;
+}
+
+/* Footer */
+
+/* The divider is to get over the 'margin-top + clear' problem. */
+#footer {
+	clear:left;
+	padding-top:0.1em;
+}
+
+.footer-column h4 {
+	margin-top:-0.2em;
+	margin-bottom:1em;
+}
+
+#divider {
+	margin-top:1.3em;
+	padding-top:1.5em;
+	border-top:0.1em solid #BBB;
+	margin-bottom:0.25em;
+}
+
+#divider-end {
+	clear:left;
+}
+
+#past-footer p {
+	margin-right:20px;
+}
+
+#past-footer {
+	text-align:right;
+	font-size: 75%;
+}
+
+#out-and-about {
+	width:140px;
+	padding-left:20px;
+	margin-right:20px;
+	float:left;
+}
+
+#out-and-about ul {
+    margin-left:-20px;
+}
+
+#out-and-about a {
+	text-decoration:none;
+	color:#333;
+}
+
+.tweet-date {
+	font-size: 0.75em;
+	color:#666;
+	margin-top:-1.25em;
+	margin-bottom:1.75em;
+}
+
+/* Images for the 'Out and about' list */
+
+#twitter {
+	list-style-image:url('/site_media/images/icons/twitter.png');
+}
+
+#facebook {
+	list-style-image:url('/site_media/images/icons/facebook.png');
+}
+
+#posterous {
+	list-style-image:url('/site_media/images/icons/posterous.png');
+}
+
+#flickr {
+	list-style-image:url('/site_media/images/icons/flickr.png');
+}
+
+#linkedin {
+	list-style-image:url('/site_media/images/icons/linkedin.png');
+}
+
+#github {
+	list-style-image:url('/site_media/images/icons/github.png');
+}
+
+#gitwrite {
+	list-style-image:url('/site_media/images/icons/github.png');
+}
+
+#some-tweets {
+	width:300px;
+	padding-left:160px;
+	margin-right:20px;
+	float:left;
+}
+
+#this-site {
+	width:300px;
+	margin-right:0px;
+	float:left;
+}
+
+/* Pre area */
+
+pre {
+	padding:0.8em 0 0.75em 10px;
+	background-color:#DDD;
+	color:#333;
+	overflow:scroll;
+}
+
+/* Base layouts */
+
+.content-item {
+	clear:left;
+	margin-bottom:1.5em;
+}
+
+.content-header {
+	width:620px;
+	padding-left:340px;
+	margin-right:20px;
+	float:left;
+}
+
+.content-section {
+	width:300px;
+	padding-left:20px;
+	margin-right:20px;
+	float:left;
+}
+
+.content-body {
+	width:500px;
+	margin-right:140px;
+	float:left;
+}
+
+.content-only {
+    width: 500px;
+    margin-right:140px;
+    padding-left: 340px;
+    float:left;
+}
+
+/* Error layouts */
+
+.error-page {
+    line-height:1.5em;
+    margin-top:1.5em;
+}
+
+.error-link {
+    text-decoration:none;
+}
+
+.error-link:before {
+    content: "\2192  ";
+    display: inline;
+}

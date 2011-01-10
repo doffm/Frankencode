@@ -1,0 +1,63 @@
+{% extends "frankencode.html" %}
+
+{% block content %}
+<div class="content-item">
+    <div class="content-section alt-header section-header">
+        <h4> About </h4>
+    </div>
+    <div id="hire-me-button">
+        <map name="hire-map" id="hire-map">
+            <area shape="circle" coords="70,69,69" href="hire" alt="Hire Me"/>
+        </map>
+        <img src="site_media/images/hiremebutton.png" alt="Hire Me" usemap="#hire-map"/>
+    </div>
+    <div class="content-body body-header">
+        {{about.snippet|safe}}
+    </div>
+</div>
+
+<div class="content-item">
+    <div class="content-section alt-header section-header">
+        <h4><a name='contact' style="text-decoration:none">Contact</a></h4>
+    </div>
+    <div class="content-body">
+        <p> The area below will automatically expand to fit your message. Please remember to leave some
+            contact details such as an e-mail address, Skype name or twitter account name.</p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <textarea name="contact" class="contact-area" rows="2" cols="50">Please type your message and contact details here.</textarea>
+            <input class="contact-send" type="submit" value="Send"/>
+        </form>
+        {% if contactmsg %}
+            <p {% if contactfail %} class='contact-fail' {% else %} class='contact-reply'{% endif %}>{{contactmsg}}</p>
+        {% endif %}
+        <script type="text/javascript">
+            $('textarea.contact-area').autoResize({
+                animate : true,
+                animateDuration : 100,
+                extraSpace : 21,
+            });
+            $('textarea.contact-area').click(function() {
+                if (this.value == 'Please type your message and contact details here.') {
+                    this.value = ''
+                    $(this).css({color:'#333'})
+                }
+            });
+            $('textarea.contact-area').blur(function() {
+                if (this.value == '') {
+                    this.value = 'Please type your message and contact details here.'
+                    $(this).css({color:'#777'})
+                }
+            });
+        </script>
+    </div>
+</div>
+
+<div class="content-item">
+    {% load cache %}
+    {% load latestblog %}
+    {% cache 6000 frankencode_latestblog %}
+        {% latestblog %}
+    {% endcache %}
+</div>
+{% endblock %}

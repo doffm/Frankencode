@@ -1,0 +1,10 @@
+.DS_Store
+*.pyc
+dbindexer/
+django/
+djangoappengine/
+djangotoolbox/
+feedparser.py
+simplejson/
+ttp.py
+twitter.py

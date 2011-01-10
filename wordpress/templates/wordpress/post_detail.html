@@ -1,0 +1,62 @@
+{% extends "frankencode.html" %}
+{% load remove_newlines %}
+
+{% block title %} {{post.title}} {% endblock %}
+
+{% block content %}
+<div class='content-item'>
+    <div class='content-header'>
+        <h3>{{ post.post_title }}</h3>
+        <p class='blog-meta'>{{ post.post_date_gmt }}</p>
+    </div>
+    <div class='content-only'>
+        {% if post_is_html %}
+            {{ post.post_content_latin|safe }}
+        {% else %}
+            {{ post.post_content_latin|safe|remove_newlines|linebreaks}}
+        {% endif %}
+    </div>
+</div>
+
+<div class='content-item'>
+    <div class='content-only'>
+        <a href='http://doffm.posterous.com'><h4 class='more-posts'>Latest posts</h4></a>    
+        <a href='/index.php'><h4 class='more-posts'>More from the archive</h4></a>      
+    </div>
+</div>
+
+<div class='content-item'>
+    <div class='content-only'>
+        <div class='user-comments'>
+            <ul>
+                {% load show_gravatar %}
+                {% for comment in comments %}
+                <li id='comment{{ comment.key.id }}'>
+                    <div class='comment-avatar'>
+                        {% show_gravatar comment.comment_author_email 48 %}
+                    </div>
+                    <div class='comment-permalink'>
+                        <a href=#comment{{ comment.key.id }}>Permalink</a>
+                    </div>
+                    <div class='comment-head'>
+                    {% if comment.comment_author_url %}
+                        <a href='{{ comment.comment_author_url }}'> {{ comment.comment_author }} </a> 
+                    {% else %}
+                        {{ comment.comment_author }}
+                    {% endif %}
+                    </div>
+                    <div class='comment-date blog-meta'>
+                    {{ comment.comment_date_gmt}}
+                    </div>
+                    <div class='comment-body'>
+                        <p>
+                            {{ comment.comment_content|safe }}
+                        </p>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

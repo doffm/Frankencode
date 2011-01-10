@@ -1,0 +1,14 @@
+{% extends "frankencode.html" %}
+
+{% block title %} Frankencode | Hire {% endblock %}
+
+{% block content %}
+<div class="content-item">
+    <div class="content-only">
+        {{hire_me.snippet|safe}}
+        <div id="codethink-meeting">
+            <a href='http://www.codethink.co.uk'><img src="site_media/images/codethinkpolaroid.png" alt="Codethink staff at a meeting."/></a>
+        </div>
+    </div>
+</div>
+{% endblock %}

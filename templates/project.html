@@ -1,0 +1,48 @@
+{% extends "frankencode.html" %}
+
+{% block title %} Frankencode | Projects {% endblock %}
+
+{% block content %}
+{% for project in projects %}
+<div class="content-item project-item">
+    <div class="content-header {% if not forloop.first %} project-header {% endif %}">
+        <h3>{{project.title}}</h3>
+    </div>
+    
+    <div class="content-section">
+    {% if project.image %}
+    <div class="project-image">
+        <img src="{{ project.image }}"/>
+    </div>
+    {% endif %}
+    </div>
+
+    <div class="project-description content-body">
+        {{project.description|safe}}
+    </div>
+
+    <div class="content-section alt-header section-header">
+        <h5>Skills</h5>
+    </div>
+    <div class="content-body">
+        {{project.skills|safe}}
+    </div>
+    
+    {% if project.site %}
+    <div class="content-section alt-header section-header">
+        <h5>Site</h5>
+    </div>
+    <div class="content-body">
+        {{project.site|safe}}
+    </div>
+    {% endif %}
+    
+    <div class="content-section alt-header section-header">
+        <h5>Code</h5>
+    </div>
+    <div class="project-code content-body">
+        {{project.code|safe}}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

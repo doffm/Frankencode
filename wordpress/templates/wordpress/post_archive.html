@@ -1,0 +1,20 @@
+{% extends "frankencode.html" %}
+
+{% block title %} Frankencode | Archive {% endblock %}
+
+{% block content %}
+{% for date, archive in date_groups %}
+<div class="content-item">
+    <div class="content-section alt-header section-header">
+        <h4><a href="{{date.year}}/">{{ date|date:"Y" }}</a></h4>
+    </div>
+    <div class="content-body">
+        <ul>
+            {% for post in archive %}
+            <li class="blog-list"><a href="{{ post.get_absolute_url }}">{{ post.post_title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

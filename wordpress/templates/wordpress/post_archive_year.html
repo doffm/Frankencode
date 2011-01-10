@@ -1,0 +1,26 @@
+{% extends "frankencode.html" %}
+
+{% block title %} Frankencode | Archive {% endblock %}
+
+{% block content %}
+{% for date, archive in date_groups %}
+<div class="content-item">
+    <div class="content-section alt-header section-header">
+        <h4><a href="{{date.month}}/">{{ date|date:"F" }}</a></h4>
+    </div>
+    <div class="content-body">
+        <ul>
+            {% for post in archive %}
+            <li class="blog-list"><a href="{{ post.get_absolute_url }}">{{ post.post_title }}</a></li>
+            {% endfor %}
+        <ul>
+    </div>
+</div>
+{% endfor %}
+<div class='content-item'>
+    <div class='content-only'>
+        <a href='http://doffm.posterous.com'><h4 class='more-posts'>Latest posts</h4></a>    
+        <a href='/index.php'><h4 class='more-posts'>More from the archive</h4></a>      
+    </div>
+</div>
+{% endblock %}

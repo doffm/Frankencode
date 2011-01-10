@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <!-- Font CSS -->
+        <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+        <!-- Base CSS -->
+        <link rel="stylesheet" href="site_media/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+        <link rel="stylesheet" href="site_media/css/blueprint/print.css" type="text/css" media="print" />
+        <!--[if IE]>
+        <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection" />
+        <![endif]-->
+        <link rel="stylesheet" href="site_media/css/baseline.css" type="text/css" media="screen, projection">
+        <link rel="stylesheet" href="site_media/css/layout.css" type="text/css" media="screen, projection">
+    </head>
+    <body>
+        <!-- Grab latest version of jQuery -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"/>
+
+        <!-- Include the hashgrid script -->
+        <script type="text/javascript" src="site_media/hashgrid.js"></script>
+        
+        <div id="container">
+            
+            <div id="header">
+                <h1> Frankencode </h1>
+            </div>
+            
+            <div id="navigation">
+                <h2>&#8594 <a>Projects</a> &#47 <a>Resume</a> &#47 <a>Archive</a> <h2>
+            </div>
+            
+            <div class="bodyitem">
+                <div class="bodymeta">
+                    <h4> About </h4>
+
+                </div>
+                <div id="hiremebutton">
+                    <img src="site_media/images/hiremebutton-small.png" alt="Hire Me"/>
+                </div>
+                <div class="bodycontent">
+                    <p>Hello, and welcome to my hub. My name is Mark and I'm a hacker and developer based in Manchester, UK. I have been working on mobile devices and platforms my entire career, and open source solutions for the past four. The mobile device landscape has changed dramatically in that time, unifying devices with the internet, creating fantastic application platforms, and making the use of open-source virtually mandatory. I'm always on the lookout for new and exciting ideas and technologies.</p>
+
+                    <p>I have worked on a variety of projects in the past, some of which are showcased on this site. For my employer, <a href="http://codethink.co.uk/">Codethink</a>, I am currently working on the use of RDF and SPARQL with an open-source mobile platform. You can find out much more by visiting my blog at <a href="http://doffm.posterous.com/">posterous</a>.</p>
+
+                    <p>There are many options for you to get in touch with me. As well as the ubiquitous <a href="http://www.facebook.com/mark.doffman">facebook</a> I'm also available through <a href="http://twitter.com/doffm">twitter</a> and <a href="http://uk.linkedin.com/pub/mark-doffman/14/924/204">LinkedIn</a>. If you prefer, you can contact me directly below.</p>
+                    
+                    <p>Thanks for looking!</p>
+                </div>
+            </div>
+            
+            <div class="bodyitem">
+                <div class="bodymeta">
+                    <h4> Latest blog </h4>
+                </div>
+                <div class="bodycontent">
+                    <h1>Recognising a language with Antlr and Python</h1>
+                    <p> 
+                    	<p>A while ago I started writing an IDL for <a href="http://www.freedesktop.org/wiki/Software/dbus">D-Bus</a>, which was envisioned as a
+                    fairly complex language. A large number of libraries and programs were
+                    available to help but I settled on Antlr. I had tried flex / bison before
+                    and never had a good experience. Besides ruling out the &lsquo;C&rsquo; version, this
+                    also discouraged me from using language implementations such as <a href="http://www.dabeaz.com/ply/">ply</a>.</p> 
+
+                    <p>Antlr is a parser generator, similar to flex / bison, and written in Java.
+                    It has the advantage of having many &lsquo;target&rsquo; languages. This means it is
+                    possible to create parsers in many languages including Python, C, and Java.
+                    As a parser generator Antlr has its own language for describing languages.
+                    This is supposed to make the grammar of the language clear, and act as a
+                    specification for the language as well as generating an implementation of a
+                    parser for it.</p> 
+
+                    <p>In Antlr the lexer and parser are described in the same file. The difference
+                    between a lexer and parser is technical but Antlr makes this distinction,
+                    parsing a language in two separate stages. The lexer is simpler and serves
+                    to split a sequence of characters into a sequence of words or tokens. The
+                    parser can be more complicated and is used to &lsquo;recognise&rsquo; a sequence of
+                    symbols that conform to the grammar of the language.</p> 
+
+                    <p>Descriptions of languages are made up of a sequence of &lsquo;rules&rsquo; each of these
+                    rules what is permissible within the language. Lexer rules start with an
+                    upper-case character, and parser rules start with a lower-case character.
+                    Below is a grammar file that parses a very simple css-like language.</p> 
+
+                    <div class="CodeRay"> 
+                      <div class="code"><pre>grammar simplecss;
+
+options {
+        language = Python;
+}
+
+/* Parser rules */
+
+cssdocument : cssrule+ ;
+
+cssrule : IDENTIFIER '{' declarationlist '}' ;
+
+declarationlist : declaration+ ;
+
+declaration : IDENTIFIER ':' IDENTIFIER ';' ;
+
+/* Lexer rules */
+
+fragment LETTER : 'A'..'Z'
+                | 'a'..'z'
+                | '_'
+                ;
+
+fragment DIGIT : '0'..'9' ;
+
+IDENTIFIER : LETTER (LETTER | DIGIT)* ;
+
+COMMENT : '/*' .* '*/' {$channel = HIDDEN} ;
+
+WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+
+             {$channel = HIDDEN} ;</pre></div> 
+                    </div> 
+
+
+                    <p>Starting with the big-picture the first rule in this file is <code>simplecss</code>.
+                    This is the top-level rule and matches a sequence of one or more css rules.
+                    Antlr syntax is somewhat consistent with regexp and feels moderately
+                    natural. The symbol indicating one-or-more is <code>+</code>.</p> 
+
+                    <div class="CodeRay"> 
+                      <div class="code"><pre>cssrule : IDENTIFIER '{' declarationlist '}' ;</pre></div> 
+                    </div> 
+
+
+                    <p>The css rule itself is an <code>IDENTIFIER</code> token followed by a <code>declarationlist</code> 
+                    inside braces. The <code>'{'</code> is a literal token within a parser rule.</p> 
+
+                    <p>In the parser rules it is acceptable to use sub-rules, such as when
+                    declaring a <code>declarationlist</code> as one or more of the rule <code>declaration</code>. This
+                    is not true for lexer rules. The lexer is used to process a stream of
+                    characters in to a stream of tokens. Each lexer rule becomes a token. To use
+                    a lexer rule within others you must declare that it as a <code>fragment</code>. This
+                    means that it will not become a token and is used just for composing other
+                    lexer rules.</p> 
+
+                    <div class="CodeRay"> 
+                      <div class="code"><pre>fragment DIGIT : '0'..'9' ;
+
+IDENTIFIER : LETTER (LETTER | DIGIT)* ;</pre></div> 
+                    </div> 
+
+
+                    <p>From the above rule you it can be seen that an <code>IDENTIFIER</code> token is very
+                    simple, just a word composed of letters and digits. As the <code>IDENTIFER</code> token
+                    is used in place of the selector, this language only allows very basic
+                    selectors.</p> 
+
+                    <div class="CodeRay"> 
+                      <div class="code"><pre>COMMENT : '/*' .* '*/' {$channel = HIDDEN} ;
+
+WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+
+             {$channel = HIDDEN} ;</pre></div> 
+                    </div> 
+
+
+                    <p>The above rules are taken from a page describing <a href="http://www.antlr.org/wiki/display/ANTLR3/Grammars">Antlr grammars</a>. They serve to remove
+                    comments and extraneous whitespace from the token stream. This is very
+                    useful as comments and whitespace can appear almost anywhere within the
+                    language. If these were processed in to tokens the parser rules would become
+                    excessively complicated.</p> 
+
+                    <p>The documentation for Antlr grammars is excellent, as well as more involved
+                    tutorials available on the <a href="http://www.antlr.org/wiki/display/ANTLR3/ANTLR+v3+documentation">Antlr website</a> there is
+                    also a <a href="http://www.pragprog.com/titles/tpantlr/the-definitive-antlr-reference">book</a> 
+                    available that does a decent job in this area. The list of operators used to
+                    compose parser and lexer rules is found on the <a href="http://www.antlr.org/wiki/display/ANTLR3/ANTLR+Cheat+Sheet">Antlr cheat sheet</a>.</p> 
+
+                    <h2>Generating Python code</h2> 
+
+                    <p>Once the grammar of the language has been declared, Antlr is used to
+                    generate programs that recognise this language. To indicate that a program
+                    should be created in the Python language <code>language = Python;</code> is placed in
+                    the grammar options. The default language is Java.</p> 
+
+                    <p>Antlr version 3 is available in the Ubuntu repositories in the <code>antlr3</code> 
+                    package. I did not use this as it is a substantially older version. The
+                    latest can be downloaded from the <a href="http://www.antlr.org/download.html">project website</a>. Some Python dependencies will also be
+                    required: the Antlr runtime module and the Stringtemplate module. The Antlr
+                    runtime library needs to be exactly the same version as the Antlr tool. This
+                    may mean that it is not possible to use the very latest version of Antlr
+                    with Python. I used version 3.1.2 of the <a href="http://www.antlr.org/download/antlr-3.1.2.jar">Antlr tool</a> and the <a href="http://www.antlr.org/download/Python/antlr_python_runtime-3.1.2.tar.gz">Python runtime
+                    library</a>. I
+                    used version 3.2.1 of the <a href="http://www.stringtemplate.org/download/PyStringTemplate-3.2b1.tar.gz">Stringtemplate module</a>.</p> 
+
+                    <p>Once you have downloaded the Antlr tool as a jar you can run it directly.</p> 
+
+                    <div class="CodeRay"> 
+                      <div class="code"><pre>&gt; java -classpath antlr-3.1.2.jar org.antlr.Tool simplecss.g</pre></div> 
+                    </div> 
+
+
+                    <p>This will generate two python files <code>simplecssLexer.py</code> and
+                    <code>simplecssParser.py</code>. Make sure that the python dependencies are in the
+                    <code>PYTHONPATH</code>. It is now possible to write a script that checks if a file
+                    conforms to the language grammar.</p> 
+
+                    <div class="CodeRay"> 
+                     <div class="code"><pre><span class="kw">import</span> <span class="ic">sys</span> 
+<span class="kw">import</span> <span class="ic">antlr3</span> 
+<span class="kw">from</span> <span class="ic">simplecssLexer</span> <span class="kw">import</span> <span class="ic">simplecssLexer</span> 
+<span class="kw">from</span> <span class="ic">simplecssParser</span> <span class="kw">import</span> <span class="ic">simplecssParser</span> 
+
+<span class="kw">def</span> <span class="fu">main</span> (argv):
+        filename = argv[<span class="i">1</span>]
+        input = antlr3.FileStream (filename)
+        lexer = simplecssLexer (<span class="pd">input</span>)
+        tokens = antlr3.CommonTokenStream (lexer)
+        parser = simplecssParser (tokens)
+        res = parser.cssdocument ()
+
+<span class="kw">if</span> __name__ == <span class="s"><span class="dl">&quot;</span><span class="k">__main__</span><span class="dl">&quot;</span></span>:
+sys.exit (main (sys.argv))</pre></div> 
+                    </div> 
+
+
+                    <p>This tool is not very useful. All it can do is find out if a document is
+                    correct, and report errors if it is not. Antlr also has support for
+                    attaching actions to parser rules and translating a sequence of tokens in to
+                    an abstract syntax tree. A data structure that is easy to manipulate within
+                    Python. In a future post I will show how to use actions and abstract syntax
+                    trees to create something a little more exciting.</p> 
+
+                    </p> 
+
+                    <p><a href="http://doffm.posterous.com/recognising-a-language-with-antlr-and-python">Permalink</a> 
+
+                    	| <a href="http://doffm.posterous.com/recognising-a-language-with-antlr-and-python#comment">Leave a comment&nbsp;&nbsp;&raquo;</a> 
+
+                    </p>
+                </div>
+            </div>
+                
+            <div id="footer">
+                
+                <div id="divider">
+                
+                <div class="footercolumn" id="out-and-about">
+                    <h4>Out and about</h4>
+                    <ul>
+                        <a href="http://twitter.com/doffm"><li id="twitter">twitter</li></a>
+                        <a href="http://github.com/doffm"><li id="github">github</li></a>
+                        <a href="http://doffm.posterous.com/"><li id="posterous">posterous</li></a>
+                        <a href="http://www.facebook.com/mark.doffman"><li id="facebook">facebook</li></a>
+                        <a href="http://www.flickr.com/photos/doffm"><li id="flickr">flickr</li></a>
+                        <a href="http://uk.linkedin.com/pub/mark-doffman/14/924/204"><li id="linkedin">LinkedIn</li></a>
+                    </ul>
+                </div>
+                    
+                <div class="footercolumn" id="some-tweets">
+                    <h4>Some tweets</h4>
+                    <p>&ldquo; I had egg and ham for lunch &rdquo;</p>
+                    <p>&ldquo; I think my girlfriend is pretty &rdquo;</p>
+                    <p>&ldquo; Twitter is the bomb &rdquo;</p>
+                </div>
+
+                <div class="footercolumn" id="this-site">
+                    <h4>This site</h4>
+                    <p>This site is served using <a href="http://www.djangoproject.com/">Django</a>. The design is influenced by the folks at <a href="http://analog.coop">Analog</a>. I'd go check them out. However, any mistakes, jarring visuals, or lack of imagination are completely my own. The site is using <a href="http://www.blueprintcss.org/">Blueprint</a> CSS for its base-line grid and typography.</p>
+                </div>
+                
+                <div id="dividerend"/>
+                
+                </div>
+                
+            </div>
+            
+            <div id="pastfooter">
+                <p id="copyright">&copy; 2010 Mark Doffman</p>
+            </div>
+
+        </div>
+    </body>
+</html>

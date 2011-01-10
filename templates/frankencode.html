@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="content-script-type" content="text/javascript"/>
+        <title>{% block title%} Frankencode | Mark Doffman {% endblock %}</title>
+        <!-- Font CSS -->
+        <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Vollkorn&amp;subset=latin' rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans&amp;subset=latin' rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+        <!-- Base CSS -->
+        <link rel="stylesheet" href="/site_media/css/blueprint/reset.css" type="text/css" media="screen, projection" />
+        <link rel="stylesheet" href="/site_media/css/blueprint/typography.css" type="text/css" media="screen, projection" />
+        <link rel="stylesheet" href="/site_media/css/blueprint/print.css" type="text/css" media="print"/>
+        <!--[if IE]>
+        <link rel="stylesheet" href="/site_media/css/blueprint/ie.css" type="text/css" media="screen, projection" />
+        <![endif]-->
+
+        <!-- Debug grid CSS -->
+        <link rel="stylesheet" href="/site_media/css/baseline.css" type="text/css" media="screen, projection"/>
+
+        <link rel="stylesheet" href="/site_media/css/frankencode-base.css" type="text/css" media="screen, projection"/>     
+        <link rel="stylesheet" href="/site_media/css/frankencode-extra.css" type="text/css" media="screen, projection"/>
+    </head>
+    <body>
+        <!-- Grab latest version of jQuery -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <!-- Include the hashgrid script -->
+        <script type="text/javascript" src="site_media/javascript/hashgrid.js"></script>
+        <!-- Include the autoResize script -->
+        <script type="text/javascript" src="site_media/javascript/textresize.js"></script>
+        
+        <div class="container">
+            
+            <div id="header">
+                <h1> <a href="/home">Frankencode</a> </h1>
+            </div>
+            
+            <div id="navigation">
+                <h2>
+                    &#8594;
+                    <a href="/home#contact">Contact</a> &#47;
+                    <a href="/resume">Resume</a> &#47;
+                    <a href="/projects">Projects</a>  &#47;
+                    <a href="/index.php/">Archive</a> &#47;
+                    <a href="http://doffm.posterous.com">Blog</a>
+                </h2>
+            </div>
+            
+            {% block content %} {% endblock %}
+            
+            {% load cache %}
+            {% cache 3600 frankencode_footer %}
+            <div id="footer">
+                
+                <div id="divider">
+                
+                <div class="footer-column" id="out-and-about">
+                    <h4 class="alt-header">Out and about</h4>
+                    <ul>
+                        <li id="twitter"><a href="http://twitter.com/doffm">twitter</a></li>
+                        <li id="github"><a href="http://github.com/doffm">github</a></li>
+                        <li id="posterous"><a href="http://doffm.posterous.com/">posterous</a></li>
+                        <li id="facebook"><a href="http://www.facebook.com/mark.doffman">facebook</a></li>
+                        <li id="flickr"><a href="http://www.flickr.com/photos/doffm">flickr</a></li>
+                        <li id="gitwrite"><a href="http://doffm.gitwrite.com/">GitWrite</a></li>
+                        <li id="linkedin"><a href="http://uk.linkedin.com/pub/mark-doffman/14/924/204">LinkedIn</a></li>
+                    </ul>
+                </div>
+                    
+                <div class="footer-column" id="some-tweets">
+                    <h4 class="alt-header">Some tweets</h4>
+                    {% for tweet in tweets %}
+                        <p>&ldquo; {{tweet.html|safe}} &rdquo;</p>
+                        <p class='tweet-date'> {{tweet.date}}</p>
+                    {% endfor %}
+                </div>
+
+                <div class="footer-column" id="this-site">
+                    <h4 class="alt-header">This site</h4>
+                    {{this_site.snippet|safe}}
+                </div>
+                
+                <div id="divider-end"></div>
+                
+                </div>
+                
+            </div>
+            {% endcache %}
+            
+            <div id="past-footer">
+                <p id="copyright">&copy; 2010 Mark Doffman</p>
+            </div>
+
+        </div>
+    </body>
+</html>

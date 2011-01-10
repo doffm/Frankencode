@@ -1,0 +1,84 @@
+{% extends "frankencode.html" %}
+
+{% block title %} Frankencode | Resume {% endblock %}
+
+{% block content %}
+
+<div id="resume-mugshot">
+    <img src="site_media/images/markpolaroid.png" alt="Mark Doffman's mugshot"/>
+</div>
+
+<div class="content-header">
+    <h2>Mark Doffman</h2>
+</div>
+
+<div class="content-item">
+    <div class="content-section alt-header section-header">
+        <h5>Education</h5>
+    </div>
+    <div class="content-body resume-body">
+        <p><strong>Imperial College</strong>, London, England <br/>
+           MEng in Electrical & Electronic Engineering (2:1)</p>
+        <p><strong>Sir John Deane's College</strong>, Northwich, England <br/>
+           A-Levels in Maths (A), Physics (A), and Chemistry (A)</p>
+    </div>
+</div>
+
+<div class="content-item">
+    <div class="content-section alt-header section-header">
+        <h5>Technical Skills</h5>
+    </div>
+    <div class="content-body">
+        <p><strong>Software Development</strong> <br/>
+            C/C++, Python, Autotools, Git, Embedded C, RDF, SPARQL, HTML, CSS, RTOS</p>
+        <p><strong>Software Platforms</strong> <br/>
+            MeeGo, GNOME, Linux, Gtk+, Ubuntu/Debian, Qt, Django</p>
+    </div>
+</div>
+
+<div class="content-item">
+    <div class="content-section alt-header section-header">
+        <h5>Employment History</h5>
+    </div>
+    <div class="content-body">
+        <div>
+            <p><strong>Codethink Ltd</strong>, Manchester, England <br/>
+               Operations manager<br/><em>January, 2009 - present</em></p>
+    
+            <strong>Responsibilities</strong>
+            <ul>
+                <li>As part of the Codethink board develop strategy with regards to research sales and operations.</li>
+                <li>Lead discussion within open-source communities to drive customer projects.</li>
+            </ul>
+        </div>
+        
+        <div class="employment-item">
+            <p><strong>Codethink Ltd</strong>, Manchester, England <br/>
+               Software Engineer<br/><em>August, 2007 - January 2009</em></p>
+    
+            <strong>Responsibilities</strong>
+            <ul>
+                <li>Design and propose solutions for Codethink clients.</li>
+                <li>Develop mobile applications and systems software.</li>
+            </ul>
+        </div>
+        
+        <div class="employment-item">
+            <p><strong>Motorola TTPCom devision</strong>, Cambridge, England <br/>
+               Software Engineer<br/><em>August, 2004 - June 2007</em></p>
+    
+            <strong>Responsibilities</strong>
+            <ul>
+                <li>Software development in C/C++ focusing on GSM / GPRS protocol stack and audio software.</li>
+                <li>GSM / GPRS conformance testing.</li>
+                <li>Liaising with customers to solve integration issues.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class='content-item'>
+    <div class='content-only'>
+        <a href='/hire'><h4 class='more-posts'>Hire me</h4></a>       
+    </div>
+</div>
+{% endblock %}

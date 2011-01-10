@@ -1,0 +1,7 @@
+cron:
+- description: Update my latest blog entry
+  url: /tasks/update/blog
+  schedule: every 24 hours
+- description: Update my latest tweets
+  url: /tasks/update/tweets
+  schedule: every 2 hours

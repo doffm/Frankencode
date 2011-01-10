@@ -1,0 +1,166 @@
+
+/* About section */
+
+#hire-me-button {
+	position:absolute;
+	left:140px;
+	top:25em;
+	margin-left:20px;
+}
+
+/* Contact area */
+
+.contact-area {
+	display:block;
+	font:1em 'Droid Sans Mono', 'andale mono', 'lucida console', monospace;
+	line-height:1.5em;
+	border:none;
+	outline:none;
+	width:480px;
+	padding:1.5em 10px 0 10px;
+	margin:-0.1em 0 1.5em 0;
+	background-color:#BCD;
+	color:#777;
+}
+
+.contact-send {
+	font:1em 'Droid Sans Mono', 'andale mono', 'lucida console', monospace;
+	line-height:1.5em;
+	padding:0.8em 10px;
+	margin:0 0 0 -1px;
+	background-color: #CCC;
+	border:none;
+	outline:none;
+	color: #000;
+	cursor: pointer;
+	margin-bottom:1.5em;
+}
+
+.contact-reply {
+    font:1em 'Droid Sans Mono', 'andale mono', 'lucida console', monospace;
+    line-height:1.5em;
+	color:#361;
+}
+
+.contact-fail {
+    font:1em 'Droid Sans Mono', 'andale mono', 'lucida console', monospace;
+    line-height:1.5em;
+	color:#631;
+}
+
+/* Project page */
+
+.project-image {
+	width:140px;
+	padding-left:120px;
+	margin-right:80px;
+	float:left;
+}
+
+.project-description {
+	padding-left:340px;
+}
+
+.project-header {
+    margin-top:1.5em;
+}
+
+.project-code ul {
+	list-style:none;
+	padding-left:0;
+}
+
+/* Hire page */
+
+#codethink-meeting {
+    padding-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+/* Resume page */
+#resume-mugshot {
+    position: absolute;
+    top: 3em;
+    right: 140px;
+}
+
+.employment-item {
+	border-top:0.1em solid #BBB;
+	margin-top: -0.75em;
+	padding-top: 0.75em;
+}
+
+/* Blog entries */
+.blog-meta {
+	font-family:"Volkorn", "Bookman Old Style", Georgia, serif;
+	color: #666;
+	font-style: italic;
+}
+
+.blog-list {
+	list-style: none;
+	margin-left: -45px;
+}
+
+.blog-list a {
+	text-decoration: none;
+}
+
+h4.more-posts {
+    color: #361;
+    font-style: italic;
+}
+
+h4.more-posts:before {
+    content: "\2192  ";
+    display: inline;
+}
+
+.content-only img {
+    max-width: 500px;
+}
+
+/* Blog comments */
+.user-comments {
+    margin-top: 1.5em;
+}
+
+.user-comments ul {
+    list-style: none;
+}
+
+.comment-avatar {
+    float: left;
+}
+
+.comment-head {
+    font-family:"Volkorn", "Bookman Old Style", Georgia, serif;
+    font-size: 1.2em; line-height: 1.25;
+    padding-left: 68px;
+}
+
+.comment-head a {
+    text-decoration: none;
+}
+
+.comment-date {
+    padding-left: 68px;
+}
+
+.comment-permalink {
+    float: right;
+    text-align: right;
+}
+
+.comment-permalink a {
+    color: #666;
+    text-decoration: none;    
+}
+
+.comment-body {
+    clear: left;
+}
+
+.comment-body p {
+    margin: 1.5em 0 1.5em 0;
+}
